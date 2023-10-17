@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FeatureRoutingModule } from './feature-routing.module';
 import { FeatureComponent } from './feature.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
