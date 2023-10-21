@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { AuthLoginRequestDto } from 'src/app/core/models/authLoginRequestDto';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { TokenService } from 'src/app/core/services/token.service';
 import { AppBaseComponent } from 'src/app/core/utils/AppBaseCamponent';
 
 @Component({
@@ -14,7 +16,7 @@ export class LoginComponent extends AppBaseComponent {
   // Formulario reactivo de login
   public loginForm : FormGroup;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private tokenService: TokenService) {
     super();
     this.loginForm = new FormGroup({
       email: new FormControl('email@ejemplo.com', [Validators.required, Validators.email]),
@@ -23,7 +25,7 @@ export class LoginComponent extends AppBaseComponent {
     
   }
 
-  public  signIn(): void {
+  public async signIn(): Promise<void> {
     let dtoLogin: AuthLoginRequestDto;
 
     if (this.loginForm.valid) {      
@@ -35,9 +37,16 @@ export class LoginComponent extends AppBaseComponent {
       };
       console.log(dtoLogin);
       
+      await lastValueFrom(this.authService.signIn(dtoLogin));
+
+      console.log(this.tokenService.getToken());
+
+      this.router.navigateByUrl("/portafolio");
+
+      /*
       this.authService.signIn(dtoLogin).subscribe(value => {
         console.log(value);
-      });
+      }); */
     
     } else {
       alert("Incorrecto");

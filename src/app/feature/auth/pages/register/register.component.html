@@ -22,68 +22,67 @@
               ">
             <div class="card-body p-5 shadow-5 text-center">
               <h2 class="fw-bold mb-5">Regístrese ahora</h2>
-              <form>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
+              <form role="form" [formGroup]="registerForm" *ngIf="registered == false">
+                <!-- Nombre input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formFullName">Nombre</label>
+                  <input formControlName="fullName" type="email" id="formFullName" class="form-control" placeholder="Indique su nombre completo"
+                  [ngClass]="{'error': isTouchedField(registerForm, 'fullName')}" />
+                  <span class="text-danger">{{getErrorsForm('fullName')}}</span>
+                </div>
+
+                <!-- card Id input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="formCardId">Número de documento</label>
+                  <input formControlName="cardId" type="text" id="formCardId" class="form-control" placeholder="Indique su número de documento"
+                  [ngClass]="{'error': isTouchedField(registerForm, 'cardId')}" />
+                  <span class="text-danger">{{getErrorsForm('cardId')}}</span>
+                </div>
+
+                <!-- 2 column grid layout with text inputs for the email and cellphone number -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">First name</label>
+                      <label class="form-label" for="formEmail">email</label>
+                      <input formControlName="email" type="text" id="formEmail" class="form-control" placeholder="Indique su dirección de correo electrónico"
+                      [ngClass]="{'error': isTouchedField(registerForm, 'email')}" />
+                      <span class="text-danger">{{getErrorsForm('email')}}</span>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Last name</label>
+                      <label class="form-label" for="formCellphoneNumber">Número de celular</label>
+                      <input formControlName="cellphoneNumber" type="text" id="formCellphoneNumber" class="form-control" placeholder="Indique su número de celular"
+                      [ngClass]="{'error': isTouchedField(registerForm, 'cellphoneNumber')}" />
+                      <span class="text-danger">{{getErrorsForm('cellphoneNumber')}}</span>
                     </div>
                   </div>
-                </div>
-  
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3">Email address</label>
-                </div>
-  
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
                 </div>
   
                 <!-- Checkbox -->
                 <div class="form-check d-flex justify-content-center mb-4">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
                   <label class="form-check-label" for="form2Example33">
-                    Subscribe to our newsletter
+                    Acepto términos y condiciones
                   </label>
                 </div>
   
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Sign up
+                <button (click)="register()" type="submit" class="btn btn-primary btn-block mb-4">
+                  Registrarse
                 </button>
   
                 <!-- Register buttons -->
                 <div class="text-center">
-                  <p>or sign up with:</p>
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-  
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                  </button>
+                  <p>Si ya te encuentras registrado: <a routerLink="../inicio-sesion">click aquí</a></p>
                 </div>
               </form>
+              <div *ngIf="registered == true">
+                <p>Registro exitoso, su contraseña predeterminada es:</p>
+                <h3>{{passwordGenerated}}</h3>
+                <p>Por favor, guárdela en un lugar seguro!</p>
+                <p>Puedes iniciar sesión: <a routerLink="../inicio-sesion">click aquí</a></p>
+              </div>
             </div>
           </div>
         </div>
