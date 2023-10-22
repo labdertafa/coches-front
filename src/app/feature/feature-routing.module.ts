@@ -9,10 +9,14 @@ const routes: Routes = [
     loadChildren: () => import("./auth/auth.module").then(a => a.AuthModule)
   },
   {
-    path: "portafolio",
-    
+    path: "portafolio",  
     canActivate: [() => inject(AuthguardService).canActiveWithoutAuth()],
     loadChildren: () => import("./home/home.module").then(a => a.HomeModule)
+  },
+  {
+    path: "admin",
+    canActivate: [() => inject(AuthguardService).canActiveWithAdminRol()],
+    loadChildren: () => import("./admin/admin.module").then(a => a.AdminModule)
   }
 ];
 

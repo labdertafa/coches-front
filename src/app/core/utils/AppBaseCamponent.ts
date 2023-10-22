@@ -1,4 +1,4 @@
-import { FormGroup} from '@angular/forms';
+import { FormArray, FormGroup} from '@angular/forms';
 
 // Componente con validaciones generales
 export class AppBaseComponent {

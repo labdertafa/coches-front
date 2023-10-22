@@ -1,0 +1,64 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <form role="form" [formGroup]="infoEsteticForm">
+                
+                <!-- Color -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4">Color del coche</label>
+                  <input formControlName="color" type="text" id="form3Example4" class="form-control" placeholder="Indica el color del coche" />
+                </div>
+
+                <!-- Número de puertas -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example5">Número de puertas</label>
+                    <input formControlName="numberDoor" type="text" id="form3Example5" class="form-control" placeholder="Indica el número de puertas del coche" />
+                </div>
+
+                <!-- Número de asientos -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example6">Número de asientos</label>
+                    <input formControlName="numberSeat" type="text" id="form3Example6" class="form-control" placeholder="Indica el número de asientos del coche" />
+                </div>
+
+                <!--Ruta de la imágen -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example7">Ruta de la imágen</label>
+                    <input formControlName="imagePath" type="text" id="form3Example7" class="form-control" placeholder="Indica la ruta de la imágen del coche" />
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+  

@@ -5,6 +5,7 @@ import { lastValueFrom } from 'rxjs';
 import { RegisterRequesDto } from 'src/app/core/models/registerRequestDto';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppBaseComponent } from 'src/app/core/utils/AppBaseCamponent';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -41,7 +42,11 @@ export class RegisterComponent extends AppBaseComponent {
 
       this.registered = true;
     } else {
-      alert("Error en el formulario!")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay errores en el formulario, revíselo por favor'
+      });
     }
   }
 

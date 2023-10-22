@@ -6,6 +6,7 @@ import { AuthLoginRequestDto } from 'src/app/core/models/authLoginRequestDto';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TokenService } from 'src/app/core/services/token.service';
 import { AppBaseComponent } from 'src/app/core/utils/AppBaseCamponent';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +50,12 @@ export class LoginComponent extends AppBaseComponent {
       }); */
     
     } else {
-      alert("Incorrecto");
+      // alert("Incorrecto");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay errores en el formulario, revíselo por favor'
+      })
     }
   }
 

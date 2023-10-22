@@ -1,0 +1,89 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <form role="form" [formGroup]="infoBasicForm">
+                
+                <!-- Marca -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example3">Marca de coche</label>
+                  <select class="form-select" id="form3Example3" formControlName="brandCarId">
+                    <option value="" selected disabled>Seleccione</option>
+                    <option *ngFor="let brandCar of listBrandCar" [value]="brandCar.id">{{brandCar.description}}</option>
+                  </select>
+                </div>
+  
+                <!-- Referencia -->
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example4">Referencia</label>
+                  <input formControlName="reference" type="text" id="form3Example4" class="form-control" placeholder="Indica la referencia del coche"
+                  [ngClass]="{'error': isTouchedField(infoBasicForm, 'reference')}"  />
+                  <span class="text-danger">{{getErrorsForm('reference')}}</span>
+                </div>
+
+                <!-- Precio -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example5">Precio</label>
+                    <input formControlName="price" type="text" id="form3Example5" class="form-control" placeholder="Indica el precio del coche"
+                    [ngClass]="{'error': isTouchedField(infoBasicForm, 'price')}"  />
+                    <span class="text-danger">{{getErrorsForm('price')}}</span>
+                </div>
+
+                <!-- Año del coche -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example6">Año del coche</label>
+                    <input formControlName="modelYear" type="text" id="form3Example6" class="form-control" placeholder="Indica el año del coche"
+                    [ngClass]="{'error': isTouchedField(infoBasicForm, 'modelYear')}"  />
+                    <span class="text-danger">{{getErrorsForm('modelYear')}}</span>
+                </div>
+
+                <!-- Categoría del coche -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example7">Categoría del coche</label>
+                    <input formControlName="category" type="text" id="form3Example7" class="form-control" placeholder="Indica la categoría del coche"
+                    [ngClass]="{'error': isTouchedField(infoBasicForm, 'category')}"  />
+                    <span class="text-danger">{{getErrorsForm('category')}}</span>
+                </div>
+
+                <!-- Inventario -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Unidades disponibles</label>
+                    <input formControlName="stock" type="text" id="form3Example8" class="form-control" placeholder="Indica las unidades disponibles"
+                    [ngClass]="{'error': isTouchedField(infoBasicForm, 'stock')}"  />
+                    <span class="text-danger">{{getErrorsForm('stock')}}</span>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+  
