@@ -1,0 +1,58 @@
+<header>
+    <app-header-nav></app-header-nav>
+</header>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Número factura</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Total</th>
+            <th scope="col">Método de pago</th>
+            <th scope="col">Ver coches</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-success" *ngFor="let purchase of purchasesHistory">
+            <th scope="row">{{purchase.billNumber}}</th>
+            <td>{{purchase.billDate}}</td>
+            <td>{{purchase.total}}</td>
+            <td>{{purchase.paymentMethod}}</td>
+            <td><button class="btn bg-info" data-bs-toggle="modal" data-bs-target="#lista-coches" (click)="showPurchasedCarList(purchase.purchaseDetailList)">Click</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="lista-coches" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Lista de coches comprados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-success" *ngFor="let car of purchaseDetailsList">
+              <td>{{car.carId}}</td>
+              <td>{{car.quantity}}</td>
+              <td>{{car.total}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

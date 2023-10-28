@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CarService } from 'src/app/core/services/car.service';
 import { TokenService } from 'src/app/core/services/token.service';
 
 @Component({
@@ -9,9 +11,14 @@ import { TokenService } from 'src/app/core/services/token.service';
 export class HeaderNavComponent {
   public nameCustomer: string;
   public emailCustomer: string;
+  public numberProducts: number = 0;
+  public subscriptionNumber: Subscription;
 
-  constructor(private tokenService: TokenService) {
+  constructor(private tokenService: TokenService, private carSevice: CarService) {
     this.nameCustomer = this.tokenService.getInfoToken().fullname;
     this.emailCustomer = this.tokenService.getInfoToken().email;
+    this.subscriptionNumber = this.carSevice.getNumberProducts().subscribe({
+      next: value => this.numberProducts = value
+    });
   }
 }

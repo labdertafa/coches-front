@@ -42,7 +42,7 @@ export class LoginComponent extends AppBaseComponent {
 
       console.log(this.tokenService.getToken());
 
-      this.router.navigateByUrl("/portafolio");
+      this.router.navigateByUrl("/portafolio/portafolio");
 
       /*
       this.authService.signIn(dtoLogin).subscribe(value => {

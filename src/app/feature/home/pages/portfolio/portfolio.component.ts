@@ -56,6 +56,7 @@ export class PortfolioComponent {
 
     console.log("Carro agregado!");
     localStorage.setItem('purchaseDetails', JSON.stringify(this.purchaseDetails));
+    this.carService.setNumberProducts();
   }
 
   public deleteCarShoppingCart(carToDelete: CarDto): void {
@@ -85,5 +86,6 @@ export class PortfolioComponent {
     }
     console.log("Carro eliminado!");
     localStorage.setItem('purchaseDetails', JSON.stringify(this.purchaseDetails));
+    this.carService.setNumberProducts();
   }
 }
