@@ -43,7 +43,7 @@
                 <!-- Precio -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example5">Precio</label>
-                    <input formControlName="price" type="text" id="form3Example5" class="form-control" placeholder="Indica el precio del coche"
+                    <input formControlName="price" type="number" id="form3Example5" class="form-control" placeholder="Indica el precio del coche"
                     [ngClass]="{'error': isTouchedField(infoBasicForm, 'price')}"  />
                     <span class="text-danger">{{getErrorsForm('price')}}</span>
                 </div>
@@ -51,7 +51,7 @@
                 <!-- Año del coche -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example6">Año del coche</label>
-                    <input formControlName="modelYear" type="text" id="form3Example6" class="form-control" placeholder="Indica el año del coche"
+                    <input formControlName="modelYear" type="number" id="form3Example6" class="form-control" placeholder="Indica el año del coche"
                     [ngClass]="{'error': isTouchedField(infoBasicForm, 'modelYear')}"  />
                     <span class="text-danger">{{getErrorsForm('modelYear')}}</span>
                 </div>
@@ -67,7 +67,7 @@
                 <!-- Inventario -->
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example8">Unidades disponibles</label>
-                    <input formControlName="stock" type="text" id="form3Example8" class="form-control" placeholder="Indica las unidades disponibles"
+                    <input formControlName="stock" type="number" id="form3Example8" class="form-control" placeholder="Indica las unidades disponibles"
                     [ngClass]="{'error': isTouchedField(infoBasicForm, 'stock')}"  />
                     <span class="text-danger">{{getErrorsForm('stock')}}</span>
                 </div>

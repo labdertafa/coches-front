@@ -11,6 +11,7 @@ export class AuthguardService {
   constructor(private tokenService: TokenService, private router: Router) { }
 
   public canActiveWithAuth(): boolean {
+    console.log("canActiveWithAuth()");
     if (this.tokenService.getToken()) {
       this.router.navigateByUrl("/portafolio");
       return false;
@@ -19,6 +20,7 @@ export class AuthguardService {
   }
 
   public canActiveWithoutAuth(): boolean {
+    console.log("canActiveWithoutAuth()");
     if (!this.tokenService.getToken()) {
       alert("No tiene permisos");
       this.router.navigateByUrl("/authenticacion/inicio-sesion");
@@ -28,6 +30,7 @@ export class AuthguardService {
   }
 
   public canActiveWithAdminRol(): boolean {
+    console.log("canActiveWithAdminRol()");
     if (this.tokenService.getInfoToken().rol != Rol.ADMIN && !this.canActiveWithAuth()) {
       alert("No tiene permisos");
       this.router.navigateByUrl("/authenticacion/inicio-sesion");

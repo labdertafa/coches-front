@@ -21,9 +21,12 @@ export class AuthInterceptor implements HttpInterceptor {
     let headers;
     let token = this.tokenService.getToken();
 
-    if (!token) {
+    if (!token || (token.length == 0)) {
       return next.handle(request);
     }
+
+    console.log("Interceptor: tengo token!");
+    console.log(token);
 
     headers = {
       'Authorization': 'Bearer ' + token
